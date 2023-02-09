@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"FreeRTOS_8051.obj" 
+TO "FreeRTOS_8051" 
+Rtx51Tiny 

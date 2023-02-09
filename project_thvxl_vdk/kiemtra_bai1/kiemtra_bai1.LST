@@ -1,0 +1,50 @@
+C51 COMPILER V9.52.0.0   KIEMTRA_BAI1                                                      01/31/2023 07:58:15 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE KIEMTRA_BAI1
+OBJECT MODULE PLACED IN kiemtra_bai1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE kiemtra_bai1.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          
+   3          sbit in = P3^3;
+   4          sbit out = P3^4;
+   5          sbit syn = P3^5;
+   6          sbit dt = P1^7;
+   7          
+   8          int i,j;
+   9          void main(){
+  10   1        char temp;
+  11   1        char x[8] ={0x7c,0x7e,0x66,0x7c,0x7c,0x6e,0x66,0x63};
+  12   1          while(1){
+  13   2            syn = 1;
+  14   2            for(i = 0; i <8 ;i++){
+  15   3              temp = x[i];
+  16   3              for(j = 0; j < 8; j++){
+  17   4                dt = temp%2;
+  18   4                temp = temp/2;
+  19   4                in = 1;
+  20   4                in = 0;
+  21   4              }
+  22   3              out = 1;
+  23   3              out = 0;
+  24   3              syn = 0;
+  25   3            }
+  26   2          }
+  27   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     97    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

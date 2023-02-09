@@ -1,0 +1,107 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/06/2023  17:00:19  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE BAI1_TEST.obj TO BAI1_TEST
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  BAI1_TEST.obj (BAI1_TEST)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?SCDIV)
+
+
+LINK MAP OF MODULE:  BAI1_TEST (BAI1_TEST)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         _DATA_GROUP_
+            DATA    0010H     0004H     UNIT         ?DT?BAI1_TEST
+            IDATA   0014H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0118H     UNIT         ?C?LIB_CODE
+            CODE    011BH     0064H     UNIT         ?PR?MAIN?BAI1_TEST
+            CODE    017FH     000CH     UNIT         ?C_C51STARTUP
+            CODE    018BH     0008H     UNIT         ?CO?BAI1_TEST
+
+
+
+OVERLAY MAP OF MODULE:   BAI1_TEST (BAI1_TEST)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?BAI1_TEST
+
+?PR?MAIN?BAI1_TEST             0008H    0008H
+  +--> ?CO?BAI1_TEST
+
+
+
+SYMBOL TABLE OF MODULE:  BAI1_TEST (BAI1_TEST)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        BAI1_TEST
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/06/2023  17:00:19  PAGE 2
+
+
+  C:011BH         PUBLIC        main
+  C:018BH         SYMBOL        _?ix1000
+  B:00B0H.3       PUBLIC        in
+  B:0090H.7       PUBLIC        dt
+  B:00B0H.4       PUBLIC        out
+  B:00B0H.5       PUBLIC        syn
+  D:0010H         PUBLIC        i
+  D:0012H         PUBLIC        j
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        x
+  D:0007H         SYMBOL        temp
+  -------         ENDDO         
+  C:011BH         LINE#         11
+  C:011BH         LINE#         19
+  C:012EH         LINE#         21
+  C:0131H         LINE#         22
+  C:0131H         LINE#         23
+  C:0133H         LINE#         24
+  C:0138H         LINE#         25
+  C:013FH         LINE#         26
+  C:0144H         LINE#         27
+  C:0152H         LINE#         28
+  C:0157H         LINE#         29
+  C:0159H         LINE#         30
+  C:015BH         LINE#         31
+  C:0169H         LINE#         32
+  C:016BH         LINE#         33
+  C:016DH         LINE#         34
+  C:016FH         LINE#         35
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        BAI1_TEST
+
+  -------         MODULE        ?C?COPY
+  C:00D3H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?SCDIV
+  C:00F9H         PUBLIC        ?C?SCDIV
+  -------         ENDMOD        ?C?SCDIV
+
+Program Size: data=21.0 xdata=0 code=403
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

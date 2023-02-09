@@ -1,0 +1,24 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\HocTap_3_2022_2023\TH_vxl_vdk\project_thvxl_vdk\BAI1_LMD01_TEST_8051_8X8\BAI1_LMD01_TEST_8051_8X8.uvproj
+Project File Date:  01/06/2023
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+compiling BAI1_LMD01_TEST_8051_8X8.c...
+BAI1_LMD01_TEST_8051_8X8.c(21): error C141: syntax error near 'i'
+Target not created
+Rebuild target 'Target 1'
+compiling BAI1_LMD01_TEST_8051_8X8.c...
+linking...
+Program Size: data=21.0 xdata=0 code=403
+"BAI1_LMD01_TEST_8051_8X8" - 0 Error(s), 0 Warning(s).
+Rebuild target 'Target 1'
+compiling BAI1_LMD01_TEST_8051_8X8.c...
+linking...
+Program Size: data=21.0 xdata=0 code=403
+creating hex file from "BAI1_LMD01_TEST_8051_8X8"...
+"BAI1_LMD01_TEST_8051_8X8" - 0 Error(s), 0 Warning(s).

@@ -1,0 +1,65 @@
+C51 COMPILER V9.52.0.0   BAI1_LMD01_8051_8X8                                               01/06/2023 10:10:30 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE BAI1_LMD01_8051_8X8
+OBJECT MODULE PLACED IN BAI1_LMD01_8051_8x8.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE BAI1_LMD01_8051_8x8.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          /*
+   2          chuong trinh lmd01 quet led matrix 8x8 theo hang
+   3          Le Minh Huu 26/12/2022
+   4          */
+   5          #include <REGX51.H>
+   6          sbit in = P3^3;
+   7          sbit out = P3^4;
+   8          sbit syn = P3^5;
+   9          sbit dt = P1^7;
+  10          
+  11          unsigned int t = 1000;
+  12          int i, j;
+  13          
+  14          void delay(){
+  15   1        while(t--);
+  16   1      }
+  17          
+  18          void main(){
+  19   1        char temp;
+  20   1        //char x[8] = {0x18, 0x3c, 0x66, 0x66, 0x7e, 0x7e, 0x66,0x66};  //chu A
+  21   1        //char x[8] = {0x78, 0x66, 0x7c, 0x7e, 0x63, 0x63, 0x7e, 0x7e}; //chu B
+  22   1        //char x[8] = {0xc3, 0xc3,0xc3, 0xff, 0xff, 0xc3, 0xc3,0xc3};  //chu H
+  23   1        //char x[8] = {0x3c, 0x78, 0xc0, 0xc0,0xc0,0xc0, 0x78, 0x3c};   // chu C
+  24   1        char x[8] = {0xc3,0xc3,0xc3,0xc3,0xc3,0xc3,0x7e,0x3c};  //chu U
+  25   1        P1 = 0;
+  26   1        while(1){
+  27   2          syn = 0xff;
+  28   2          for(i = 0; i < 8; i++){
+  29   3            temp = x[i];
+  30   3            for(j = 0; j < 8; j++){
+  31   4              dt = temp %2;
+  32   4              temp = temp/2;
+  33   4              in = 1;
+  34   4              in = 0;
+  35   4            }
+  36   3            out = 1; 
+  37   3            out = 0;
+  38   3              syn = 0x00;
+  39   3          }
+  40   2          //delay();
+  41   2        }
+  42   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    114    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

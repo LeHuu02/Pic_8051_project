@@ -1,0 +1,106 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/31/2023  07:58:15  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE kiemtra_bai1.obj TO kiemtra_bai1
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  kiemtra_bai1.obj (KIEMTRA_BAI1)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?SCDIV)
+
+
+LINK MAP OF MODULE:  kiemtra_bai1 (KIEMTRA_BAI1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         _DATA_GROUP_
+            DATA    0010H     0004H     UNIT         ?DT?KIEMTRA_BAI1
+            IDATA   0014H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0118H     UNIT         ?C?LIB_CODE
+            CODE    011BH     0061H     UNIT         ?PR?MAIN?KIEMTRA_BAI1
+            CODE    017CH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0188H     0008H     UNIT         ?CO?KIEMTRA_BAI1
+
+
+
+OVERLAY MAP OF MODULE:   kiemtra_bai1 (KIEMTRA_BAI1)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?KIEMTRA_BAI1
+
+?PR?MAIN?KIEMTRA_BAI1          0008H    0008H
+  +--> ?CO?KIEMTRA_BAI1
+
+
+
+SYMBOL TABLE OF MODULE:  kiemtra_bai1 (KIEMTRA_BAI1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        KIEMTRA_BAI1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/31/2023  07:58:15  PAGE 2
+
+
+  C:011BH         PUBLIC        main
+  C:0188H         SYMBOL        _?ix1000
+  B:00B0H.3       PUBLIC        in
+  B:0090H.7       PUBLIC        dt
+  B:00B0H.4       PUBLIC        out
+  B:00B0H.5       PUBLIC        syn
+  D:0010H         PUBLIC        i
+  D:0012H         PUBLIC        j
+  -------         PROC          MAIN
+  -------         DO            
+  D:0007H         SYMBOL        temp
+  D:0008H         SYMBOL        x
+  -------         ENDDO         
+  C:011BH         LINE#         9
+  C:011BH         LINE#         11
+  C:012EH         LINE#         12
+  C:012EH         LINE#         13
+  C:0130H         LINE#         14
+  C:0135H         LINE#         15
+  C:013CH         LINE#         16
+  C:0141H         LINE#         17
+  C:014FH         LINE#         18
+  C:0154H         LINE#         19
+  C:0156H         LINE#         20
+  C:0158H         LINE#         21
+  C:0166H         LINE#         22
+  C:0168H         LINE#         23
+  C:016AH         LINE#         24
+  C:016CH         LINE#         25
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        KIEMTRA_BAI1
+
+  -------         MODULE        ?C?COPY
+  C:00D3H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?SCDIV
+  C:00F9H         PUBLIC        ?C?SCDIV
+  -------         ENDMOD        ?C?SCDIV
+
+Program Size: data=21.0 xdata=0 code=400
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

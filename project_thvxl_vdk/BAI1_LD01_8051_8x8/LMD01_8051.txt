@@ -1,0 +1,46 @@
+/*
+chuong trinh lmd01 quet led matrix 8x8 theo hang
+Le Minh Huu 26/12/2022
+*/
+#include <REGX51.H>
+
+//khai bao cac chan tin hieu
+sbit Data = P1^7;
+sbit inClock  = P3^3;
+sbit outClock  = P3^4;
+sbit dongBo = P3^5;
+
+void delay(unsigned int t){
+	while(t--){}
+}
+
+void main(){
+	//chuyen doi ky tu can hien thi ra ma hex, gom 8 hang, moi hang la mot ma
+	char data x[8] = {0xc3, 0xc3, 0xff, 0xff, 0xc3, 0xc3, 0xc3, 0xc3};
+	int i,j;
+	char trungGian;
+	P1 = 0;
+	while(1){
+		dongBo = 1;	
+		//tao xung outClock. moi lan la quet mot hang
+			for(i = 0; i < 8; i++){
+				trungGian = x[i];
+				
+				for(j = 0; j < 8; j++){					
+					//chia gia tri tu (trong mang x[]) thanh ma nhi phan de ghi vao
+					Data = trungGian%2;				//ghi du lieu vao: lay phan du la 0 hoac 1
+					trungGian = trungGian/2;	//chia tiep dich chuyen sang bit tiep theo
+					
+					//moi lan quet mot gia tri nhi phan cua duong data
+					inClock = 1;
+					inClock = 0;
+				}
+				//quet xong mot hang thi tao xung clock de quet hang tiep theo
+				outClock = 1;
+				outClock = 0;
+				//dich chuyen gia tri 1 cua dong bo sang bit tiep theo
+				dongBo = 0;
+			}
+			//delay(1000);
+	}
+}

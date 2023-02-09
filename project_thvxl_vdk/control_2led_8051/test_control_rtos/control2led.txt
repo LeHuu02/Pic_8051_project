@@ -1,0 +1,90 @@
+/*
+Le Minh Huu /12/2022
+test code control 2 led: doc lap
+*/
+#include <regx51.h>
+
+sbit  led1 = P2^0;
+sbit  led2 = P2^1;
+
+unsigned int dem1 = 0;
+unsigned int dem2 = 0;
+
+void main(){
+	led1 = led2 = 0;
+	//11,0592 mhz 	//timer 0: 10ms
+	TMOD = 0x01;	//timer 0
+	TL0 = 0xFF;
+	TH0 = 0xED;
+	TR0 = 1;	//khoi dong timer 0
+	while(1){	
+			//cu sau 10ms thi co tran TF0 bat len 1
+		if(TF0 == 1){
+			dem1++;
+			dem2++;
+			//kiem tra xung
+			P2_3 = ~P2_3;			
+			TR0 = 0;	//khoi dong timer 0			
+			TMOD = 0x01;
+			TL0 = 0xFF;
+			TH0 = 0xED;
+			TR0 = 1;
+			TF0 = 0; 	//xoa co ngat timer 0			
+		}
+		
+		//neu 30ms thi bat tat led 1
+		if(dem1 == 6){
+			led1 = ~led1;
+			dem1 = 0;
+		}
+		//neu 50ms thi bat tat led 2
+		if(dem2 == 10){
+			led2 = ~led2;				
+			dem2 = 0;
+		}
+	
+	}
+}
+#include <regx51.h>
+
+sbit  led1 = P2^0;
+sbit  led2 = P2^1;
+
+unsigned int dem1 = 0;
+unsigned int dem2 = 0;
+
+void main(){
+	led1 = led2 = 0;
+	//11,0592 mhz 	//timer 0: 10ms
+	TMOD = 0x01;	//timer 0
+	TL0 = 0xFF;
+	TH0 = 0xED;
+	TR0 = 1;	//khoi dong timer 0
+	while(1){	
+			//cu sau 10ms thi co tran TF0 bat len 1
+		if(TF0 == 1){
+			dem1++;
+			dem2++;
+			//kiem tra xung
+			P2_3 = ~P2_3;			
+			TR0 = 0;	//khoi dong timer 0			
+			TMOD = 0x01;
+			TL0 = 0xFF;
+			TH0 = 0xED;
+			TR0 = 1;
+			TF0 = 0; 	//xoa co ngat timer 0			
+		}
+		
+		//neu 30ms thi bat tat led 1
+		if(dem1 == 6){
+			led1 = ~led1;
+			dem1 = 0;
+		}
+		//neu 50ms thi bat tat led 2
+		if(dem2 == 10){
+			led2 = ~led2;				
+			dem2 = 0;
+		}
+	
+	}
+}

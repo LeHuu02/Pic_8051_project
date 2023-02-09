@@ -1,0 +1,76 @@
+C51 COMPILER V9.52.0.0   FREERTOS_8051                                                     02/01/2023 17:50:39 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE FREERTOS_8051
+OBJECT MODULE PLACED IN FreeRTOS_8051.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE FreeRTOS_8051.c OMF2 BROWSE DEBUG TABS(2)
+
+line level    source
+
+   1          /*
+   2          Le Minh Huu 31/12/2022
+   3          test code control 2 led: doc lap
+   4          //copy ham tu ben thu vien rtx51.h sang thi khong bij loi os_creat_task
+   5          vao phan options tai target chon phan target -> opening system chon regx 51 tiny. de include thu vien.
+   6          */
+   7          #include <regx51.h>
+   8          #include <rtx51tny.h>
+   9          #define INIT 0
+  10          #define LED1 1
+  11          #define LED2 2
+  12          
+  13          #define on 1
+  14          #define off 0
+  15          
+  16          sbit  led1 = P2^0;
+  17          sbit  led2 = P2^1;
+  18          
+  19          unsigned int dem1 = 0;
+  20          unsigned int dem2 = 0;
+  21          
+  22          //function start up
+  23          void Startup(void) _task_ INIT{
+  24   1        os_create_task (1);
+  25   1        os_create_task (2);
+  26   1        os_delete_task (0);
+  27   1      }
+  28          
+  29          //1 tick = 10ms
+  30          void Task_led1(void) _task_ LED1{
+  31   1        while(1){
+  32   2          os_wait2 (K_IVL,3); //3 tick --> 30ms
+  33   2          led1 = on;  //sang trong 50ms
+  34   2          os_wait2 (K_IVL,5); //5 tick --> 50ms
+  35   2          led1 = off; //tat trong 30ms
+  36   2        }
+  37   1      }
+  38          
+  39          void Task_led2(void) _task_ LED2{
+  40   1        while(1){
+  41   2          os_wait2 (K_IVL,7); //7 tick --> 70ms
+  42   2          led2 = on;  //sang trong 30ms
+  43   2          os_wait2 (K_IVL,3); //3 tick --> 30ms
+  44   2          led2 = off; //tat trong 70ms    
+  45   2        }
+  46   1      }
+  47          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     55    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+C51 COMPILER V9.52.0.0   FREERTOS_8051                                                     02/01/2023 17:50:39 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

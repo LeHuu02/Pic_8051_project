@@ -1,0 +1,60 @@
+C51 COMPILER V9.52.0.0   BAI1_TEST                                                         01/06/2023 17:00:19 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE BAI1_TEST
+OBJECT MODULE PLACED IN BAI1_TEST.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE BAI1_TEST.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          
+   3          
+   4          sbit in = P3^3;
+   5          sbit out = P3^4;
+   6          sbit syn = P3^5;
+   7          sbit dt = P1^7;
+   8          
+   9          int i,j;
+  10          
+  11          void main(){
+  12   1        
+  13   1        //char x[8] = {0xc3,0xc3,0xc3,0xff,0xff,0xc3,0xc3,0xc3,};
+  14   1        //char x[8] = {0x18, 0x3c, 0x66,0x66,0x7e,0x7e,0x66,0x66};
+  15   1        //char x[8] = {0xf8,0xc6, 0xfc, 0xfe,0xc3,0xc3,0xfe,0xfe};
+  16   1        //char x[8] = {0x00,0x6c,0x92,0x82,0x82,0x44,0x28,0x10};  //trai tim
+  17   1        //char x[8] = {0x3f,0x06,0x06, 0x06,0x06,0x2c,0x3c,0x18};
+  18   1        //char x[8] = {0x7E,0x18,0x18,0x18,0x18,0x18,0x1A,0x0C};
+  19   1        char x[8] = {0x63,0x63,0x66,0x78,0x78,0x66,0x63,0x63};
+  20   1        char temp;
+  21   1        P1 = 0;
+  22   1          while(1){
+  23   2            syn = 1;
+  24   2            for(i = 0; i < 8; i++){
+  25   3              temp = x[i];
+  26   3              for(j = 0; j < 8; j++){
+  27   4                dt = temp%2;
+  28   4                temp = temp/2;
+  29   4                in = 1;
+  30   4                in = 0;
+  31   4              }
+  32   3              out = 1;
+  33   3              out = 0;
+  34   3              syn = 0;
+  35   3            }
+  36   2          }
+  37   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    100    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

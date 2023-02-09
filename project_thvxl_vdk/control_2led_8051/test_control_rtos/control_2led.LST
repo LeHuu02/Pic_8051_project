@@ -1,0 +1,59 @@
+C51 COMPILER V9.52.0.0   CONTROL_2LED                                                      12/31/2022 03:03:54 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE CONTROL_2LED
+OBJECT MODULE PLACED IN control_2led.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE control_2led.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          /*
+   2          Le Minh Huu 31/12/2022
+   3          test code control 2 led: doc lap
+   4          */
+   5          #include <regx51.h>
+   6          #include <REX51TNY.H>
+*** WARNING C318 IN LINE 6 OF control_2led.c: can't open file 'REX51TNY.H'
+   7          #define INIT 0
+   8          #define LED1 1
+   9          #define LED2 2
+  10          
+  11          #define on 1
+  12          #define off 0
+  13          
+  14          sbit  led1 = P2^0;
+  15          sbit  led2 = P2^1;
+  16          
+  17          unsigned int dem1 = 0;
+  18          unsigned int dem2 = 0;
+  19          
+  20          //function start up
+  21          void Startup(void) _task_ INIT{
+  22   1        led1 = led2 = 0;
+  23   1        //11,0592 mhz   //timer 0: ms
+  24   1        TMOD = 0x01;  //timer 0
+  25   1        TL0 = 0xFF;
+  26   1        TH0 = 0xED;
+  27   1        TR0 = 1;  //khoi dong timer 0
+  28   1      }
+  29          
+  30          void Task_led1(void) _task_ LED1{
+  31   1        while(1){
+  32   2          os_wait2 (K_IVL,50);
+*** ERROR C202 IN LINE 32 OF control_2led.c: 'K_IVL': undefined identifier
+  33   2          led1 = ~led1;
+  34   2          
+  35   2        }
+  36   1      }
+  37          
+  38          void Task_led2(void) _task_ LED2{
+  39   1        while(1){
+  40   2          os_wait2 (K_IVL,50);
+*** ERROR C202 IN LINE 40 OF control_2led.c: 'K_IVL': undefined identifier
+  41   2          led2 = ~led2;
+  42   2          
+  43   2        }
+  44   1      }
+  45          
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  2 ERROR(S)

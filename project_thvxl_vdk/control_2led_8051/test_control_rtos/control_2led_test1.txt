@@ -1,0 +1,73 @@
+/*
+Le Minh Huu 30/12/2022
+test code control 2 led: doc lap
+*/
+#include <regx51.h>
+
+#define on 1
+#define off 0
+
+sbit  led1 = P2^0;
+sbit  led2 = P2^1;
+
+unsigned int dem1 = 0;
+unsigned int dem2 = 0;
+
+void main(){
+	led1 = led2 = 0;
+	//11,0592 mhz 	//timer 0: ms
+	TMOD = 0x01;	//timer 0
+	TL0 = 0xFF;
+	TH0 = 0xED;
+	TR0 = 1;	//khoi dong timer 0
+	while(1){	
+			//cu sau ms thi co tran TF0 bat len 1
+		if(TF0 == 1){
+			dem1++;
+			dem2++;
+			//kiem tra xung
+			P2_3 = ~P2_3;			
+			TR0 = 0;			
+			TMOD = 0x01;
+			TL0 = 0xFF;
+			TH0 = 0xED;
+			TR0 = 1;	//khoi dong timer 0	
+			TF0 = 0; 	//xoa co ngat timer 0			
+		}
+		
+		//led 1 bat tat trong 50 ms, led 2 bat tat trong 30ms
+		//=====================================
+		//neu 30ms thi bat tat led 1
+		/*
+		if(dem1 == 6){
+			led1 = ~led1;
+			dem1 = 0;
+		}
+		//neu 50ms thi bat tat led 2
+		if(dem2 == 10){
+			led2 = ~led2;				
+			dem2 = 0;
+		}	
+		*/
+		
+		//=========================
+		//dem 1 sang trong 50 ms, tat trong 30ms
+		if(dem1 == 16){
+			led1 = off;	//led 1 off
+			dem1 = 0;
+		}else if(dem1 == 6){
+			led1 = on;	//led 1 on
+			//dem1 = 0;
+		}
+		
+		//den 2 sang trong 30ms tat trong 70ms
+		if(dem2 == 6){
+			led2 = off;	//led 2 off				
+			//dem2 = 0;
+		}else if(dem2 == 20){
+			led2 = on;	//led 2 on
+			dem2 = 0;
+		}
+		
+	}
+}
